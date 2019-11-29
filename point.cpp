@@ -16,7 +16,7 @@ std::istream &operator>> (std::istream &is, point &p) {
     is >> p.x >> p.y;
     return is;
 }
-std::ostream &operator<< (std::ostream &os, point &p) {
+std::ostream &operator<< (std::ostream &os, const point &p) {
     os << p.x << " " << p.y << std::endl;
     return os;
 }
