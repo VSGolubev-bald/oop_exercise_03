@@ -7,12 +7,18 @@ trapeze::trapeze(std::istream &is) {
     is >> a_ >> b_ >> c_ >> d_;
 }
 double trapeze::area() const {
-    if ( VectPropX(operator-(b_, a_), operator-(d_, c_)) == VectPropY (operator-(b_, a_), operator-(d_, c_)) ) {
-        return (VectNorm(b_, a_) + VectNorm(d_,c_) / 2) * sqrt ( pow(VectNorm(c_, a_) , 2)
-        -  pow ( ( (pow((VectNorm(d_,c_) - VectNorm(b_, a_)), 2) + pow(VectNorm(c_, a_), 2) - pow(VectNorm(d_, b_), 2) ) /
-                (2 * (VectNorm(d_,c_) - VectNorm(b_, a_))) ) , 2) );
+    if ( VectPropX(operator-(a_, b_), operator-(d_, c_)) == VectPropY(operator-(a_, b_), operator-(d_, c_)) || ( operator-(a_,b_).y == 0 && operator-(d_,c_).y == 0) ) {
+        return ((VectNorm(a_, b_) + VectNorm(d_, c_)) / 2) * sqrt(
+                VectNorm(d_, a_) * VectNorm(d_, a_) - (
+                        pow((
+                                    (pow((VectNorm(d_, c_) - VectNorm(a_, b_)), 2) +
+                                     VectNorm(d_, a_) * VectNorm(d_, a_) - VectNorm(b_, c_) * VectNorm(b_, c_)) /
+                                    (2 * (VectNorm(d_, c_) - VectNorm(a_, b_)))
+                            ), 2)
+                )
+        );
     } else {
-        std::cout << "This is not a trapeze" << std::endl;
+        std::cout << "It`s not a trapeze" << std::endl;
     }
 }
 point trapeze::center() const {

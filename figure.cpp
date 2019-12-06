@@ -7,29 +7,32 @@ double figure::VectNorm(point l, point r) const {
     return res;
 }
 double figure::VectPropX(point l, point r) const {
-    double res = l.x / r.x;
+    double res;
+    if (l.x == 0 || r.x == 0) {
+        res = 0;
+    } else {
+        res = l.x / r.x;
+    }
     return res;
 }
 double figure::VectPropY(point l, point r) const{
-    double res = l.y / r.y ;
+    double res;
+    if (l.y == 0 || r.y == 0) {
+        res = 0;
+    } else {
+        res = l.y / r.y ;
+    }
     return res;
 }
 
 double figure::ScalProd(point l, point r) const {
-    return l.x * r.x + l.y * r.y;
+    return std::abs(l.x * r.x + l.y * r.y);
 }
-
-double figure::COS(point l, point r) const {
-    double res = ScalProd(l, r) / VectNorm(l, r);
-    return res;
-}
-
-double figure::SIN(point l, point r) const {
-    return sqrt(1 - pow(COS(l, r), 2));
-}
-
-double figure::TrArea(point a, point b, point c) const {
-    return VectNorm(a,b) * VectNorm(a,c) * SIN(operator-(a,b), operator-(a,c));
+double::figure::TrAngle(point a, point b, point c) const {
+     point  v1, v2;
+     v1 = operator-(a, b);
+     v2 = operator-(a, c);
+     return std::abs(v1.x * v2.y - v2.x * v1.y) / 2;
 }
 
 

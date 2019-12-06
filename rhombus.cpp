@@ -6,8 +6,8 @@ rhombus::rhombus(std::istream &is) {
     is >> a_ >> b_ >> c_ >> d_;
 }
 double rhombus::area() const {
-    if ( VectPropX(operator-(b_, a_), operator-(d_, c_)) == VectPropY(operator-(b_, a_), operator-(d_, c_)) &&
-    VectPropX(operator-(d_, a_), operator-(c_, b_)) == VectPropY(operator-(d_, a_), operator-(c_, b_)) &&
+    if ( VectPropX(operator-(a_, b_), operator-(d_, c_)) == VectPropY(operator-(a_, b_), operator-(d_, c_)) &&
+    VectPropX(operator-(a_, d_), operator-(b_, c_)) == VectPropY(operator-(a_, d_), operator-(b_, c_)) &&
     ScalProd(operator-(c_,a_), operator-(d_,b_)) == 0 ) {
         return VectNorm(c_, a_) * VectNorm(d_, b_) / 2 ;
     } else {

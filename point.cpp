@@ -4,7 +4,7 @@ point operator+ (point l, point r) {
     return {l.x + r.x, l.y + r.y};
 };
 point operator- (point l, point r) {
-    return { l.x - r.x, l.y - r.y};
+    return { r.x - l.x, r.y - l.y};
 };
 point operator* (point p, double a) {
     return {p.x * a, p.y * a};

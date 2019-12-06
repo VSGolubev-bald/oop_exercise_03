@@ -13,9 +13,7 @@ struct figure {
     double VectPropX(point l, point r) const;
     double VectPropY(point l, point r) const;
     double ScalProd(point l, point r) const;
-    double COS(point l, point r) const;
-    double SIN(point l, point r) const;
-    double TrArea(point a, point b, point c) const;
+    double TrAngle(point a, point b, point c) const;
 };
 #endif //OOP_EXERCISE_03_FIGURE_H
 
