@@ -6,7 +6,7 @@ trapeze::trapeze(const point &a, const point &b, const point &c, const point &d)
 trapeze::trapeze(std::istream &is) {
     is >> a_ >> b_ >> c_ >> d_;
     if ( ( VectProd(operator-(a_,b_), operator-(d_,c_)) == 0) ||
-         (VectProd(operator-(b_,c_), operator-(a_,d_)) == 0)  ) {
+         (VectProd(operator-(b_,c_), operator-(a_,d_)) == 0) ) {
         std::cout << "Correct" << std::endl;
     } else {
         std::cout << "Wrong" << std::endl;
@@ -14,7 +14,9 @@ trapeze::trapeze(std::istream &is) {
     }
 }
 double trapeze::area() const {
-    if (VectProd(operator-(a_,b_), operator-(d_,c_)) == 0) {
+    if ( (VectProd(operator-(a_,b_), operator-(c_,d_)) == 0) && (VectProd(operator-(b_,c_), operator-(a_,d_)) == 0) ) {
+        return fabs((VectProd(operator-(a_,b_), operator-(a_,d_)))) ;
+    } else if (VectProd(operator-(a_,b_), operator-(d_,c_)) == 0) {
         return ((VectNorm(a_, b_) + VectNorm(d_, c_)) / 2) * sqrt(
                 VectNorm(d_, a_) * VectNorm(d_, a_) - (
                         pow((
