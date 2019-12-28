@@ -8,9 +8,13 @@ rhombus::rhombus(std::istream &is) {
          VectProd(operator-(a_, d_), operator-(b_, c_)) == 0 &&
          ScalProd(operator-(c_,a_), operator-(d_,b_)) == 0 ) {
         std::cout << "Correct" << std::endl;
+
     }
     else {
         std::cout << "Wrong" << std::endl;
+        throw 1;
+
+
     }
 }
 double rhombus::area() const {

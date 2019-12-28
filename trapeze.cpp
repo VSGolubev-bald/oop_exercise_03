@@ -10,6 +10,7 @@ trapeze::trapeze(std::istream &is) {
         std::cout << "Correct" << std::endl;
     } else {
         std::cout << "Wrong" << std::endl;
+        throw 1;
     }
 }
 double trapeze::area() const {
