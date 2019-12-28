@@ -34,5 +34,7 @@ double::figure::TrAngle(point a, point b, point c) const {
      v2 = operator-(a, c);
      return std::abs(v1.x * v2.y - v2.x * v1.y) / 2;
 }
-
+double::figure::VectProd(point a, point b) const {
+    return a.x * b.y - b.x * a.y;
+}
 

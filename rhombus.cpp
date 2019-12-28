@@ -4,8 +4,8 @@ rhombus::rhombus() : a_{0, 0}, b_{0, 0}, c_{0, 0}, d_{0, 0} {}
 rhombus::rhombus(const point &a, const point &b, const point &c, const point &d) : a_(a), b_(b), c_(c), d_(d) {};
 rhombus::rhombus(std::istream &is) {
     is >> a_ >> b_ >> c_ >> d_;
-    if ( VectPropX(operator-(a_, b_), operator-(d_, c_)) == VectPropY(operator-(a_, b_), operator-(d_, c_)) &&
-         VectPropX(operator-(a_, d_), operator-(b_, c_)) == VectPropY(operator-(a_, d_), operator-(b_, c_)) &&
+    if ( VectProd(operator-(a_, b_), operator-(d_, c_)) == 0  &&
+         VectProd(operator-(a_, d_), operator-(b_, c_)) == 0 &&
          ScalProd(operator-(c_,a_), operator-(d_,b_)) == 0 ) {
         std::cout << "Correct" << std::endl;
     }

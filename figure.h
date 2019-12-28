@@ -14,6 +14,7 @@ struct figure {
     double VectPropY(point l, point r) const;
     double ScalProd(point l, point r) const;
     double TrAngle(point a, point b, point c) const;
+    double VectProd(point a, point b) const;
 };
 #endif //OOP_EXERCISE_03_FIGURE_H
 

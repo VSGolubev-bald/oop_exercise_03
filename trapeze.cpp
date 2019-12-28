@@ -5,16 +5,15 @@ trapeze::trapeze(): a_{0, 0}, b_{0, 0}, c_{0, 0}, d_{0, 0} {}
 trapeze::trapeze(const point &a, const point &b, const point &c, const point &d) : a_{a}, b_{b}, c_{c}, d_{d} {}
 trapeze::trapeze(std::istream &is) {
     is >> a_ >> b_ >> c_ >> d_;
-    if ( ( VectPropX(operator-(a_, b_), operator-(d_, c_)) == VectPropY(operator-(a_, b_), operator-(d_, c_)) || ( operator-(a_,b_).y == 0 && operator-(d_,c_).y == 0) ) ||
-         (VectPropX( operator-(b_, c_), operator-(a_, d_)) == VectPropX(operator-(b_, c_), operator-(a_, d_)) || ( operator-(b_,c_).y == 0 && operator-(a_,d_).y == 0) ) ) {
+    if ( ( VectProd(operator-(a_,b_), operator-(d_,c_)) == 0) ||
+         (VectProd(operator-(b_,c_), operator-(a_,d_)) == 0)  ) {
         std::cout << "Correct" << std::endl;
     } else {
         std::cout << "Wrong" << std::endl;
     }
 }
 double trapeze::area() const {
-    if (VectPropX(operator-(a_, b_), operator-(d_, c_)) == VectPropY(operator-(a_, b_), operator-(d_, c_)) ||
-        (operator-(a_, b_).y == 0 && operator-(d_, c_).y == 0)) {
+    if (VectProd(operator-(a_,b_), operator-(d_,c_)) == 0) {
         return ((VectNorm(a_, b_) + VectNorm(d_, c_)) / 2) * sqrt(
                 VectNorm(d_, a_) * VectNorm(d_, a_) - (
                         pow((
@@ -25,8 +24,7 @@ double trapeze::area() const {
                 )
         );
 
-    } else if (VectPropX(operator-(b_, c_), operator-(a_, d_)) == VectPropX(operator-(b_, c_), operator-(a_, d_)) ||
-               (operator-(b_, c_).y == 0 && operator-(a_, d_).y == 0)) {
+    } else if (VectProd(operator-(b_,c_), operator-(a_,d_)) == 0) {
         return ((VectNorm(b_, c_) + VectNorm(a_, d_)) / 2) * sqrt(
                 VectNorm(a_, b_) * VectNorm(a_, b_) - (
                         pow((
